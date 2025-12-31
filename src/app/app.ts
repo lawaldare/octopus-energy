@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { EnergyService } from './energy';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('octopus-enery');
+  private readonly energyService = inject(EnergyService);
+  public readonly energyBillsByDay = toSignal(
+    this.energyService.getEnergyBillsByDay().pipe(map((data: any) => data.results))
+  );
 }
