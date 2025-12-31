@@ -18,7 +18,8 @@
       <tr>
         <th scope="col">S/N</th>
         <th scope="col">Date</th>
-        <th scope="col">Consumption (kwh)</th>
+        <th scope="col">Consumption Unit (kwh)</th>
+        <th scope="col">Consumption Price (SC Inc.)</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
         <th>{{ index + 1 }}</th>
         <td>{{ energy.interval_start | date : 'longDate' }}</td>
         <td>{{ energy.consumption }}</td>
+        <td>£{{ energy.consumption | consumpionPrice }}</td>
       </tr>
       }
     </tbody>

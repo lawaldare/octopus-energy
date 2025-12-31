@@ -3,10 +3,11 @@ import { EnergyService } from './energy';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { ConsumptionPricePipe } from './energy-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, ConsumptionPricePipe],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
