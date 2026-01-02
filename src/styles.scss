@@ -1,3 +1,5 @@
+@import '../public/assets/css/fonts.scss';
+
 :root {
   --bg: #070a16;
   --card: rgba(255, 255, 255, 0.08);
@@ -20,7 +22,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sky', sans-serif;
   color: var(--text);
   background: radial-gradient(1200px 800px at 15% 10%, rgba(124, 58, 237, 0.35), transparent 60%),
     radial-gradient(1000px 700px at 90% 25%, rgba(34, 211, 238, 0.25), transparent 55%),
@@ -87,7 +89,7 @@ body {
 }
 
 .address {
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: 0.2px;
   white-space: nowrap;
   overflow: hidden;
@@ -109,7 +111,7 @@ body {
 
 .pill strong {
   color: rgba(255, 255, 255, 0.9);
-  font-weight: 650;
+  font-weight: 500;
 }
 
 /* Background blobs */
@@ -462,7 +464,7 @@ tbody td {
 .sn {
   width: 64px;
   color: rgba(255, 255, 255, 0.78);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .kwh,
@@ -470,7 +472,7 @@ tbody td {
   font-variant-numeric: tabular-nums;
 }
 .price {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .chip {
