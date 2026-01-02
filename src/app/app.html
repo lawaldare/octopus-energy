@@ -1,6 +1,6 @@
-<nav class="navbar">
-  <div class="container">
-    <section>
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <div class="badge" title="Property">
       <img
         src="https://static.octopuscdn.com/constantine/constantine.svg"
         alt="Logo"
@@ -8,29 +8,64 @@
         height="24"
         class="d-inline-block align-text-top"
       />
-      <span>Flat B, 139 Newmarket Road, Cambridge, CB5 8HA</span>
-    </section>
+      <div class="address">Flat B, 139 Newmarket Road, Cambridge, CB5 8HA</div>
+    </div>
+    <!-- <div class="pill" title="Status">
+      <span class="spark"></span>
+      Live tracking <strong>ON</strong>
+    </div> -->
   </div>
-</nav>
-<div class="container">
-  <table class="table table-striped mt-4">
-    <thead>
-      <tr>
-        <th scope="col">S/N</th>
-        <th scope="col">Date</th>
-        <th scope="col">Consumption Unit (kwh)</th>
-        <th scope="col">Consumption Price (SC Inc.)</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(energy of energyBillsByDay(); track $index; let index = $index; ){
-      <tr>
-        <th>{{ index + 1 }}</th>
-        <td>{{ energy.interval_start | date : 'longDate' }}</td>
-        <td>{{ energy.consumption }}</td>
-        <td>£{{ energy.consumption | consumpionPrice : energy.interval_start }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
 </div>
+
+<!-- animated background blobs -->
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<main class="wrap">
+  <h1 class="title">Daily Electricity Consumption</h1>
+  <!-- <p class="subtitle">
+    A clean breakdown of your daily kWh usage and total cost (including standing charge), styled for
+    clarity and quick scanning.
+  </p> -->
+
+  <section class="card table-entrance">
+    <div class="card-head">
+      <div class="left">
+        <h2>Usage Table</h2>
+        <p>Scroll horizontally on small screens. Header stays pinned.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="button" (click)="exportToCSV()">Export CSV</button>
+        <!-- <button class="btn" type="button">Filter</button>
+        <button class="btn" type="button">Compare</button> -->
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table aria-label="Daily electricity usage">
+        <thead>
+          <tr>
+            <th class="sn">S/N</th>
+            <th>Date</th>
+            <th>Consumption Unit (kWh)</th>
+            <th>Consumption Price (SC Inc.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(energy of energyBillsByDay(); track $index; let index = $index; ){
+          <tr>
+            <td class="sn">{{ index + 1 }}</td>
+            <td>{{ energy.interval_start | date : 'longDate' }}</td>
+            <td class="kwh">{{ energy.consumption }}</td>
+            <td class="price">
+              {{ energy.consumption | consumpionPrice : energy.interval_start }}
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

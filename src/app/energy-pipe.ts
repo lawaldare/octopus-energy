@@ -19,7 +19,7 @@ export class ConsumptionPricePipe implements PipeTransform {
   //   return parseFloat(consumptionPrice.toFixed(2));
   // }
 
-  transform(consumption: string, intervalStart: string): number {
+  transform(consumption: string, intervalStart: string): string {
     const kwh = Number(parseFloat(consumption).toFixed(2));
 
     // Default to old tariff if date missing
@@ -30,6 +30,6 @@ export class ConsumptionPricePipe implements PipeTransform {
     const standing = isNewTariff ? this.NEW_STANDING_CHARGE : this.OLD_STANDING_CHARGE;
 
     const total = unitRate * kwh + standing;
-    return Number(total.toFixed(2));
+    return `£${Number(total.toFixed(2))}`;
   }
 }
