@@ -28,7 +28,7 @@
         <th>{{ index + 1 }}</th>
         <td>{{ energy.interval_start | date : 'longDate' }}</td>
         <td>{{ energy.consumption }}</td>
-        <td>£{{ energy.consumption | consumpionPrice }}</td>
+        <td>£{{ energy.consumption | consumpionPrice : energy.interval_start }}</td>
       </tr>
       }
     </tbody>
