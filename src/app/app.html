@@ -56,10 +56,10 @@
         <tbody>
           @for(energy of energyBillsByDay(); track $index; let index = $index; ){
           <tr>
-            <td class="sn">{{ index + 1 }}</td>
-            <td>{{ energy.interval_start | date : 'longDate' }}</td>
-            <td class="kwh">{{ energy.consumption }}</td>
-            <td class="price">
+            <td class="sn" data-label="S/N">{{ index + 1 }}</td>
+            <td data-label="Date">{{ energy.interval_start | date : 'longDate' }}</td>
+            <td class="kwh" data-label="Consumption (kWh)">{{ energy.consumption }}</td>
+            <td class="price" data-label="Price (SC Inc.)">
               {{ energy.consumption | consumpionPrice : energy.interval_start }}
             </td>
           </tr>

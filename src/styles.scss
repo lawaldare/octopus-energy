@@ -347,15 +347,15 @@ body {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
+/* ✅ No horizontal scroll needed */
 .table-wrap {
-  overflow: auto;
+  overflow: visible;
 }
 
 table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  min-width: 680px;
 }
 
 thead th {
@@ -505,6 +505,90 @@ tbody td {
   50% {
     transform: scale(1.18);
     opacity: 1;
+  }
+}
+
+/* ✅ Bootstrap-like responsive table (stack rows into cards on mobile) */
+@media (max-width: 720px) {
+  .ribbon-inner {
+    padding: 12px 14px;
+  }
+  .address {
+    max-width: 58vw;
+  }
+  .wrap {
+    padding: 22px 14px 46px;
+  }
+
+  .card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+
+  tbody {
+    padding: 10px 10px 14px;
+  }
+
+  tbody tr {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.1);
+    transform: none; /* keep stable */
+  }
+
+  tbody td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  /* labels like bootstrap responsive tables */
+  tbody td::before {
+    content: attr(data-label);
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+    flex: 0 0 46%;
+  }
+
+  /* values */
+  tbody td > *,
+  tbody td {
+    flex: 1;
+  }
+
+  .sn {
+    width: auto;
+    font-weight: 750;
+  }
+  .price {
+    font-weight: 800;
   }
 }
 
