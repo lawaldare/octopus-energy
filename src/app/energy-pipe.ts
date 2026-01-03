@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ConsumptionPricePipe implements PipeTransform {
   private readonly NEW_TARIFF_START = new Date('2026-01-03T00:00:00Z');
 
-  private readonly OLD_UNIT_RATE = 0.27884;
-  private readonly OLD_STANDING_CHARGE = 0.47977;
+  private readonly OLD_UNIT_RATE = 0.2877;
+  private readonly OLD_STANDING_CHARGE = 0.5455;
 
-  private readonly NEW_UNIT_RATE = 0.25937;
-  private readonly NEW_STANDING_CHARGE = 0.47292;
+  private readonly NEW_UNIT_RATE = 0.2594;
+  private readonly NEW_STANDING_CHARGE = 0.4729;
 
   // transform(value: string): number {
   //   const energyPrice = 0.2788;
