@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'consumpionPrice',
 })
 export class ConsumptionPricePipe implements PipeTransform {
-  private readonly NEW_TARIFF_START = new Date('2026-01-02T00:00:00Z');
+  private readonly NEW_TARIFF_START = new Date('2026-01-03T00:00:00Z');
 
   private readonly OLD_UNIT_RATE = 0.27884;
   private readonly OLD_STANDING_CHARGE = 0.47977;
