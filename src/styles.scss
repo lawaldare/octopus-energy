@@ -349,7 +349,8 @@ body {
 
 /* ✅ No horizontal scroll needed */
 .table-wrap {
-  overflow: visible;
+  height: 600px;
+  overflow: auto;
 }
 
 table {
