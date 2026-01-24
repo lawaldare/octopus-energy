@@ -1,17 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {
+  NEW_UNIT_RATE,
+  OLD_UNIT_RATE,
+  NEW_STANDING_CHARGE,
+  OLD_STANDING_CHARGE,
+} from './energy.constant';
 
 @Pipe({
   name: 'consumpionPrice',
 })
 export class ConsumptionPricePipe implements PipeTransform {
   private readonly NEW_TARIFF_START = new Date('2026-01-03T00:00:00Z');
-
-  private readonly OLD_UNIT_RATE = 0.2877;
-  private readonly OLD_STANDING_CHARGE = 0.5455;
-
-  private readonly NEW_UNIT_RATE = 0.2594;
-  private readonly NEW_STANDING_CHARGE = 0.4729;
-
   // transform(value: string): number {
   //   const energyPrice = 0.2788;
   //   const consumptionInKWh = +parseFloat(value).toFixed(2);
@@ -26,8 +25,8 @@ export class ConsumptionPricePipe implements PipeTransform {
     const date = intervalStart ? new Date(intervalStart) : null;
     const isNewTariff = date ? date.getTime() >= this.NEW_TARIFF_START.getTime() : false;
 
-    const unitRate = isNewTariff ? this.NEW_UNIT_RATE : this.OLD_UNIT_RATE;
-    const standing = isNewTariff ? this.NEW_STANDING_CHARGE : this.OLD_STANDING_CHARGE;
+    const unitRate = isNewTariff ? NEW_UNIT_RATE : OLD_UNIT_RATE;
+    const standing = isNewTariff ? NEW_STANDING_CHARGE : OLD_STANDING_CHARGE;
 
     const total = unitRate * kwh + standing;
     return `£${Number(total.toFixed(2))}`;
