@@ -8,7 +8,7 @@ export class EnergyService {
   private readonly http = inject(HttpClient);
   private readonly BASE_URL = 'https://api.octopus.energy/v1/electricity-meter-points/';
   private readonly MPAN = '1050001544370';
-  private readonly METER_SERIAL_NUMBER = '18P0331981';
+  private readonly METER_SERIAL_NUMBER = '25E8081708';
   private readonly API_KEY = 'sk_live_ouNxPpQgzkuqlLg5MAFulQEcoNkGW6ws';
   private readonly PAGE_SIZE = 1000;
   private readonly PERIOD_FROM = '2025-12-23';
