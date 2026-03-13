@@ -1,11 +1,11 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { EnergyService } from './energy';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ConsumptionPricePipe } from './energy-pipe';
 import { DownloadFileTypeService } from './download-file-type.service';
-import { STANDING_CHARGE, UNIT_RATE } from './energy.constant';
+import { NEW_STANDING_CHARGE, NEW_UNIT_RATE } from './energy.constant';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,7 @@ export class App {
     const bills = this.energyBillsByDay();
     if (!bills) return;
     const sum = bills.reduce((acc: number, bill: any) => {
-      const price = UNIT_RATE * bill.consumption + STANDING_CHARGE;
+      const price = NEW_UNIT_RATE * bill.consumption + NEW_STANDING_CHARGE;
       return acc + price;
     }, 0);
     return sum.toFixed(2);
@@ -46,7 +46,10 @@ export class App {
         'S/N': index + 1,
         Date: this.datePipe.transform(bill.interval_start, 'longDate'),
         'Consumption Unit (kWh)': bill.consumption,
-        'Consumption Price (SC Inc.)': this.consumpionPricePipe.transform(bill.consumption),
+        'Consumption Price (SC Inc.)': this.consumpionPricePipe.transform(
+          bill.consumption,
+          bill.interval_start,
+        ),
       };
     });
     this.downloadFileTypeService.downloadCSV(dataToExport, 'energy-bills');
