@@ -33,7 +33,6 @@
     <div class="card-head">
       <div class="left">
         <h2>Usage Table</h2>
-        <p>Scroll horizontally on small screens. Header stays pinned.</p>
       </div>
 
       <div class="actions">
@@ -59,7 +58,7 @@
               <td data-label="Date">{{ energy.interval_start | date: 'longDate' }}</td>
               <td class="kwh" data-label="Consumption (kWh)">{{ energy.consumption }}</td>
               <td class="price" data-label="Price (SC Inc.)">
-                {{ energy.consumption | consumpionPrice: energy.interval_start }}
+                {{ energy.consumption | consumpionPrice }}
               </td>
             </tr>
           }
