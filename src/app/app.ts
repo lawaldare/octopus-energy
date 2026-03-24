@@ -15,7 +15,7 @@ import { NEW_STANDING_CHARGE, NEW_UNIT_RATE } from './energy.constant';
   providers: [DatePipe, ConsumptionPricePipe],
 })
 export class App {
-  private readonly NEW_DATE_START = new Date('2026-02-23T00:00:00Z');
+  private readonly NEW_DATE_START = new Date('2026-03-23T00:00:00Z');
   private readonly energyService = inject(EnergyService);
   private readonly consumpionPricePipe = inject(ConsumptionPricePipe);
   private readonly datePipe = inject(DatePipe);

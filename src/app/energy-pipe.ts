@@ -10,7 +10,7 @@ import {
   name: 'consumpionPrice',
 })
 export class ConsumptionPricePipe implements PipeTransform {
-  private readonly NEW_TARIFF_START = new Date('2026-01-03T00:00:00Z');
+  private readonly NEW_TARIFF_START = new Date('2026-04-01T00:00:00Z');
 
   transform(consumption: string, intervalStart: string): string {
     const kwh = Number(parseFloat(consumption).toFixed(2));
