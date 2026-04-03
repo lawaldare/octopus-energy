@@ -5,7 +5,12 @@ import { map } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ConsumptionPricePipe } from './energy-pipe';
 import { DownloadFileTypeService } from './download-file-type.service';
-import { NEW_STANDING_CHARGE, NEW_UNIT_RATE } from './energy.constant';
+import {
+  NEW_STANDING_CHARGE,
+  NEW_UNIT_RATE,
+  OLD_STANDING_CHARGE,
+  OLD_UNIT_RATE,
+} from './energy.constant';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +21,8 @@ import { NEW_STANDING_CHARGE, NEW_UNIT_RATE } from './energy.constant';
 })
 export class App {
   private readonly NEW_DATE_START = new Date('2026-03-23T00:00:00Z');
+  private readonly NEW_TARIFF_START = new Date('2026-03-31T00:00:00Z');
+
   private readonly energyService = inject(EnergyService);
   private readonly consumpionPricePipe = inject(ConsumptionPricePipe);
   private readonly datePipe = inject(DatePipe);
@@ -34,7 +41,12 @@ export class App {
     const bills = this.energyBillsByDay();
     if (!bills) return;
     const sum = bills.reduce((acc: number, bill: any) => {
-      const price = NEW_UNIT_RATE * bill.consumption + NEW_STANDING_CHARGE;
+      let price = 0;
+      if (new Date(bill.interval_start).getTime() >= this.NEW_TARIFF_START.getTime()) {
+        price = NEW_UNIT_RATE * bill.consumption + NEW_STANDING_CHARGE;
+      } else {
+        price = OLD_UNIT_RATE * bill.consumption + OLD_STANDING_CHARGE;
+      }
       return acc + price;
     }, 0);
     return sum.toFixed(2);
