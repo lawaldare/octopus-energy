@@ -22,7 +22,7 @@ import {
   providers: [DatePipe, ConsumptionPricePipe],
 })
 export class App {
-  private readonly NEW_DATE_START = new Date('2026-07-23T00:00:00+01:00');
+  private readonly NEW_DATE_START = new Date('2026-08-23T00:00:00+01:00');
   // private readonly NEW_TARIFF_START = new Date('2026-03-31T00:00:00Z');
 
   private readonly energyService = inject(EnergyService);
