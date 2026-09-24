@@ -5,14 +5,7 @@ import { map } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ConsumptionPricePipe } from './energy-pipe';
 import { DownloadFileTypeService } from './download-file-type.service';
-import {
-  NEW_STANDING_CHARGE,
-  NEW_UNIT_RATE,
-  OLD_STANDING_CHARGE,
-  OLD_UNIT_RATE,
-  STANDING_CHARGE,
-  UNIT_RATE,
-} from './energy.constant';
+import { STANDING_CHARGE, UNIT_RATE } from './energy.constant';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +15,7 @@ import {
   providers: [DatePipe, ConsumptionPricePipe],
 })
 export class App {
-  private readonly NEW_DATE_START = new Date('2026-08-23T00:00:00+01:00');
-  // private readonly NEW_TARIFF_START = new Date('2026-03-31T00:00:00Z');
+  private readonly NEW_DATE_START = new Date('2026-09-23T00:00:00+01:00');
 
   private readonly energyService = inject(EnergyService);
   private readonly consumpionPricePipe = inject(ConsumptionPricePipe);
